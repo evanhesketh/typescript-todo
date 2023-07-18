@@ -51,7 +51,7 @@ function TodoApp({ initialTodos }: {initialTodos: TodoInterface[]} ) {
                 ? <EditableTodoList
                     todos={todos}
                     update={update}
-                    remove={remove} />
+                    remove={remove}/>
                 : <span className="text-muted">You have no todos.</span>}
           </div>
 

@@ -12,15 +12,23 @@ import { EditableTodoListPropsInterface } from "./interfaces";
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
 
-function EditableTodoList({ todos, update, remove }: EditableTodoListPropsInterface) {
-  return todos.map(todo => (
-      <EditableTodo
+function EditableTodoList({
+  todos,
+  update,
+  remove,
+}: EditableTodoListPropsInterface) {
+  return (
+    <>
+      {todos.map((todo) => (
+        <EditableTodo
           key={todo.id}
           todo={todo}
           update={update}
           remove={remove}
-      />
-  ));
+        />
+      ))}
+    </>
+  );
 }
 
 export default EditableTodoList;
