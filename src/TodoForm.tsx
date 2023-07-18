@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { NewTodoInterface } from "./interfaces";
 
 const defaultInitialFormData = { title: "", description: "", priority: 1 };
 
@@ -11,11 +12,16 @@ const defaultInitialFormData = { title: "", description: "", priority: 1 };
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm({ initialFormData = defaultInitialFormData, handleSave }) {
+interface TodoFormPropsInterface {
+  initialFormData?: NewTodoInterface,
+  handleSave: (newTodo: NewTodoInterface) => void
+}
+
+function TodoForm({ initialFormData = defaultInitialFormData, handleSave }: TodoFormPropsInterface) {
   const [formData, setFormData] = useState(initialFormData);
 
   /** Update form input. */
-  function handleChange(evt) {
+  function handleChange(evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const input = evt.target;
     setFormData(formData => ({
       ...formData,
@@ -24,7 +30,7 @@ function TodoForm({ initialFormData = defaultInitialFormData, handleSave }) {
   }
 
   /** Call parent function and clear form. */
-  function handleSubmit(evt) {
+  function handleSubmit(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     handleSave(formData);
     setFormData(initialFormData);
