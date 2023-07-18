@@ -1,5 +1,6 @@
 import React from "react";
 import EditableTodo from "./EditableTodo";
+import { EditableTodoListPropsInterface } from "./interfaces";
 
 /** Show list of editable todos.
  *
@@ -11,7 +12,7 @@ import EditableTodo from "./EditableTodo";
  * TodoApp -> EditableTodoList -> [ EditableTodo, ... ]
  */
 
-function EditableTodoList({ todos, update, remove }) {
+function EditableTodoList({ todos, update, remove }: EditableTodoListPropsInterface) {
   return todos.map(todo => (
       <EditableTodo
           key={todo.id}

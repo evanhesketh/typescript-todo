@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
-import { TodoInterface } from "./interfaces";
+import { EditableTodoListPropsInterface, TodoInterface } from "./interfaces";
 
 /** Show editable todo item.
  *
@@ -13,10 +13,8 @@ import { TodoInterface } from "./interfaces";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-interface EditableTodoPropsInterface {
-  todo: TodoInterface,
-  remove: (id: string) => void,
-  update: (updatedTodo: TodoInterface) => void
+interface EditableTodoPropsInterface extends Omit<EditableTodoListPropsInterface, "todos"> {
+  todo: TodoInterface
 }
 
 interface FormDataInterface {
