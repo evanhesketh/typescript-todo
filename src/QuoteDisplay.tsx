@@ -1,4 +1,5 @@
 import "./QuoteDisplay.css";
+import { QuoteInterface } from "./interfaces";
 
 /** QuoteDisplay component that shows a quote
  * and a button that will retrieve a new quote
@@ -9,7 +10,12 @@ import "./QuoteDisplay.css";
  *
  * State: none
  */
-function QuoteDisplay({ getQuote, quote }) {
+
+interface QuoteDisplayPropsInterface {
+  getQuote: () => Promise<void>,
+  quote: QuoteInterface | null
+}
+function QuoteDisplay({ getQuote, quote }: QuoteDisplayPropsInterface) {
 
   function firstQuote() {
     return <div className="QuoteDisplay">
@@ -22,7 +28,7 @@ function QuoteDisplay({ getQuote, quote }) {
 
   function showQuote() {
     return <div className="QuoteDisplay">
-      <p><i>{quote.text} - {quote.author}</i></p>
+      <p><i>{quote?.text} - {quote?.author}</i></p>
       <button
           className="btn-sm QuoteDisplay-button"
           onClick={getQuote}>Nü quøte
